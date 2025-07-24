@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nayab.recipebook.databinding.ActivityMainBinding
@@ -19,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
+        window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
+
 
         // Adapter setup
         adapter = RecipeAdapter(emptyList()) { recipe ->

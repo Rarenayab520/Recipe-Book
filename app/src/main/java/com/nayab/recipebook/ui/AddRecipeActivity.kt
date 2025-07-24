@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.nayab.recipebook.data.Recipe
 import com.nayab.recipebook.databinding.ActivityAddRecipeBinding
 import com.nayab.recipebook.viewmodel.RecipeViewModel
@@ -37,6 +39,9 @@ class AddRecipeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddRecipeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
+        window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
 
         binding.btnPickImage.setOnClickListener {
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {

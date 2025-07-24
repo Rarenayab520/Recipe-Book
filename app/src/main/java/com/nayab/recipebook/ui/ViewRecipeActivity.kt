@@ -3,6 +3,8 @@ package com.nayab.recipebook.ui
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.bumptech.glide.Glide
 import com.nayab.recipebook.R
 import com.nayab.recipebook.data.Recipe
@@ -16,6 +18,9 @@ class ViewRecipeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityViewRecipeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
+        window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
+
 
         val recipe = intent.getSerializableExtra("recipe") as? Recipe
 
